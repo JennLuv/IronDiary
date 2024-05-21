@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MainView: View {
+struct ProgressView: View {
     @EnvironmentObject var healthStore: HealthStore
     @State private var fillLevel: CGFloat = 1
 
@@ -43,6 +43,6 @@ struct MainView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView()
+        ProgressView()
     }
 }
