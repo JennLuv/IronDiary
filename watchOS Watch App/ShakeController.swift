@@ -11,14 +11,13 @@ import CoreMotion
 class ShakeController: ObservableObject {
     private let motionManager = CMMotionManager()
     private var lastShakeTime: Date?
-    @Published var ingredient: Ingredient
+    @Published var isShaked = false
     
-    init(initialIngredient: Ingredient) {
-        self.ingredient = initialIngredient
+    init() {
         startDetectingShakes()
     }
     
-    private func startDetectingShakes() {
+    func startDetectingShakes() {
         if motionManager.isAccelerometerAvailable {
             motionManager.accelerometerUpdateInterval = 0.1
             motionManager.startAccelerometerUpdates(to: OperationQueue.current!) { (data, error) in
@@ -32,7 +31,7 @@ class ShakeController: ObservableObject {
         }
     }
     
-    private func handleShakeEvent() {
+    func handleShakeEvent() {
         let now = Date()
         if let lastShakeTime = lastShakeTime {
             if now.timeIntervalSince(lastShakeTime) < 1.0 {
@@ -43,8 +42,7 @@ class ShakeController: ObservableObject {
         lastShakeTime = now
         
         DispatchQueue.main.async {
-            let ingredients = Ingredient.getIngredientsData()
-            self.ingredient = ingredients.randomElement()!
+            self.isShaked = true
         }
     }
 }

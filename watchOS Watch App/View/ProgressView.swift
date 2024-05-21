@@ -9,40 +9,62 @@ import SwiftUI
 
 struct ProgressView: View {
     @EnvironmentObject var healthStore: HealthStore
-    @State private var fillLevel: CGFloat = 1
-
+    @Binding var fillLevel: Int
+    @State var showText: Bool = false
+    @State private var isBouncing: Bool = false
+    
     var body: some View {
         NavigationStack {
             VStack {
-
-                Image("RBC")
-                    .resizable()
-                    .scaledToFit()
-                    .overlay(
-                        GeometryReader { geometry in
-                            Rectangle()
-                                .foregroundColor(.black)
-                                .opacity(0.6)
-                                .frame(height: fillHeight(for: geometry.size.height))
-                        }
-                    )
-                    .frame(height: 140)
+                
+                if !showText {
+                    Image("RBC")
+                        .resizable()
+                        .scaledToFit()
+                        .overlay(
+                            GeometryReader { geometry in
+                                Rectangle()
+                                    .foregroundColor(.black)
+                                    .opacity(0.6)
+                                    .frame(height: fillHeight(for: geometry.size.height))
+                            }
+                        )
+                        .frame(height: 140)
+                } else {
+                    Text("""
+                         \(fillLevel)
+                         of 18
+                         """)
+                    .frame(width: 90, alignment: .center)
+                    .font(.largeTitle)
+                    .bold()
+                    .foregroundStyle(Color.accentColor)
+                }
             }
+            .scaleEffect(isBouncing ? 1.05 : 1.0)
+            .animation(.interpolatingSpring(stiffness: 170, damping: 15), value: isBouncing)
+            .onTapGesture {
+                withAnimation {
+                    isBouncing.toggle()
+                    showText.toggle()
+                }
+                
+            }
+            .onAppear {
+                healthStore.requestAuthorization()
+            }
+//            .navigationTitle("Iron Chef")
+//            .navigationBarTitleDisplayMode(.inline)
         }
-        .onAppear {
-            healthStore.requestAuthorization()
+    }
+        
+        private func fillHeight(for totalHeight: CGFloat) -> CGFloat {
+            return totalHeight * ((18 - CGFloat(fillLevel)) / 18)
         }
-        .navigationTitle("Iron Chef")
-        .navigationBarTitleDisplayMode(.inline)
     }
     
-    private func fillHeight(for totalHeight: CGFloat) -> CGFloat {
-        return totalHeight * ((18 - fillLevel) / 18)
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ProgressView()
-    }
-}
+    //struct ContentView_Previews: PreviewProvider {
+    //    static var previews: some View {
+    //        ProgressView()
+    //    }
+    //}

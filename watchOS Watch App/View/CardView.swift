@@ -8,29 +8,52 @@
 import SwiftUI
 
 struct CardView: View {
-    
-    @State var ingredient: Ingredient
+    @EnvironmentObject var healthStore: HealthStore
+    @Binding var ingredient: Ingredient
+    @State private var isSheetPresented = false
+    @Binding var fillLevel: Int
     
     var body: some View {
         
-        VStack {
+        VStack{
             Spacer()
-            Image(ingredient.imageName)
-                .resizable()
-                .scaledToFit()
-                .frame(height: 75)
-            Text(ingredient.ingredientDescription)
+            VStack {
+                Spacer()
+                Image(ingredient.imageName)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 75)
+                Text(ingredient.ingredientDescription)
+                Spacer()
+            }
             Spacer()
+            Button(action: {
+                playHaptic()
+                saveIronData()
+                isSheetPresented.toggle()
+                fillLevel = fillLevel + ingredient.ironValue
+            }, label: {
+                Text("Use Ingredient")
+            })
+            .background(Color.accentColor)
+            .cornerRadius(30)
+            .sheet(isPresented: $isSheetPresented, content: {
+                SuccessView(ingredient: $ingredient)
+            })
         }
-        .frame(height: 140)
-        Button(action: {
-            // Action for button
-        }, label: {
-            Text("Use Ingredient")
-        })
+        .frame(height: 190)
     }
+    
+    private func saveIronData() {
+        healthStore.saveIronData(ironValue: Double(ingredient.ironValue))
+    }
+    
+    private func playHaptic() {
+        WKInterfaceDevice.current().play(.success)
+    }
+    
 }
 
-#Preview {
-    CardView(ingredient: Ingredient(id: 1, imageName: "MeatImage", ingredientDescription: "10g of Beef", ironValue: 2))
-}
+//#Preview {
+//    CardView(ingredient: Ingredient(id: 1, imageName: "MeatImage", ingredientDescription: "10g of Beef", ironValue: 2))
+//}

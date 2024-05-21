@@ -10,9 +10,12 @@ import SwiftUI
 @main
 struct watchOS_Watch_AppApp: App {
     @State private var healthStore = HealthStore()
+    @State var fillLevel: Int = 1
+    @StateObject var shakeController = ShakeController()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(fillLevel: $fillLevel, shakeController: shakeController)
         }
         .environmentObject(healthStore)
         

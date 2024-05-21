@@ -8,11 +8,19 @@
 import SwiftUI
 
 struct SuccessView: View {
+    @Binding var ingredient: Ingredient
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack{
+            
+            Image("RBCSmile")
+                .resizable()
+                .scaledToFit()
+                .frame(height:100)
+            Spacer()
+            Text("Your iron went up by \(ingredient.ironValue) mg!")
+            
+            
+        }
     }
 }
 
-#Preview {
-    SuccessView()
-}

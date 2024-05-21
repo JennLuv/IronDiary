@@ -33,3 +33,9 @@ struct Ingredient: Identifiable, Equatable {
     }
     
 }
+
+struct DataElement: Identifiable {
+    var id = UUID()
+    var date: Date
+    var itemsComplete: Double
+}

@@ -6,29 +6,62 @@
 //
 
 import SwiftUI
+import HealthKit
+import WatchKit
 
 struct ShakableView: View {
     
-    @StateObject private var shakeController = ShakeController(initialIngredient: Ingredient(id: 1, imageName: "MeatImage", ingredientDescription: "10g of Beef", ironValue: 2))
-    @State private var isShared: Bool = false
+    @Binding var ingredient: Ingredient
+    @State var ingredientisPresent: Bool = false
+    @Binding var isRerolled: Bool
+    @Binding var fillLevel: Int
     
     var body: some View {
-        VStack {
-            if isShared {
-                CardView(ingredient: shakeController.ingredient)
-            } else {
-                Text("Shake to choose ingredient")
-                    .font(.custom("SF Compact", size: 25))
-                    .padding()
+        
+        ScrollView {
+            VStack {
+                if ingredientisPresent {
+                    CardView(ingredient: $ingredient, fillLevel: $fillLevel)
+                        .padding()
+                } else {
+                    Spacer()
+                    Text("Tap the button or shake to choose an ingredient")
+                        .padding(.horizontal, 10)
+                    
+                    Spacer()
+                    Button(action: {
+                        isRerolled.toggle()
+                        ingredientisPresent = true
+                        playHaptic()
+                    }) {
+                        Text("Choose Ingredient")
+                    }
+                    .background(Color.accentColor)
+                    .cornerRadius(30)
+                    .padding(.horizontal)
+                    
+                    
+                }
+                
+            }
+            .frame(height: 190)
+            if ingredientisPresent {
+                Button(action: {
+                    isRerolled.toggle()
+                    ingredientisPresent = true
+                    playHaptic()
+                }) {
+                    Text("Reroll Ingredient")
+                }
+                .padding(.horizontal)
+                .padding(.top)
             }
         }
-        .onChange(of: shakeController.ingredient, { oldValue, newValue in
-            isShared = true
-        })
         
     }
-}
-
-#Preview {
-    ShakableView()
+    
+    private func playHaptic() {
+        WKInterfaceDevice.current().play(.directionUp)
+    }
+    
 }
