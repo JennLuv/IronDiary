@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import WatchKit
 
 struct ContentView: View {
     @State private var selection: Tab = .main
@@ -33,6 +34,7 @@ struct ContentView: View {
         }
         .onChange(of: shakeController.isShaked) { oldValue, newValue in
             self.getRandomIngredient()
+            playHaptic()
         }
         
     }
@@ -41,6 +43,9 @@ struct ContentView: View {
         DispatchQueue.global().async {
             self.ingredient = ingredients.randomElement()!
         }
+    }
+    private func playHaptic() {
+        WKInterfaceDevice.current().play(.directionUp)
     }
     
 }

@@ -22,7 +22,7 @@ class ShakeController: ObservableObject {
             motionManager.accelerometerUpdateInterval = 0.1
             motionManager.startAccelerometerUpdates(to: OperationQueue.current!) { (data, error) in
                 if let acceleration = data?.acceleration {
-                    let threshold = 2.5
+                    let threshold = 1.5
                     if (fabs(acceleration.x) > threshold || fabs(acceleration.y) > threshold || fabs(acceleration.z) > threshold) {
                         self.handleShakeEvent()
                     }
@@ -34,14 +34,14 @@ class ShakeController: ObservableObject {
     func handleShakeEvent() {
         let now = Date()
         if let lastShakeTime = lastShakeTime {
-            if now.timeIntervalSince(lastShakeTime) < 1.0 {
+            if now.timeIntervalSince(lastShakeTime) < 0.3 {
                 return
             }
         }
         lastShakeTime = now
         
         DispatchQueue.main.async {
-            self.isShaked = true
+            self.isShaked.toggle()
         }
     }
 }

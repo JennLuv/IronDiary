@@ -25,7 +25,7 @@ struct ShakableView: View {
                         .padding()
                 } else {
                     Spacer()
-                    Text("Tap the button or shake to choose an ingredient")
+                    Text("Shake to choose an ingredient")
                         .padding(.horizontal, 10)
                     
                     Spacer()
@@ -34,7 +34,7 @@ struct ShakableView: View {
                         ingredientisPresent = true
                         playHaptic()
                     }) {
-                        Text("Choose Ingredient")
+                        Text("Start")
                     }
                     .background(Color.accentColor)
                     .cornerRadius(30)
