@@ -22,7 +22,7 @@ class ShakeController: ObservableObject {
             motionManager.accelerometerUpdateInterval = 0.1
             motionManager.startAccelerometerUpdates(to: OperationQueue.current!) { (data, error) in
                 if let acceleration = data?.acceleration {
-                    let threshold = 2.5 // Adjust threshold to detect shake
+                    let threshold = 2.5
                     if (fabs(acceleration.x) > threshold || fabs(acceleration.y) > threshold || fabs(acceleration.z) > threshold) {
                         self.handleShakeEvent()
                     }
@@ -35,7 +35,6 @@ class ShakeController: ObservableObject {
         let now = Date()
         if let lastShakeTime = lastShakeTime {
             if now.timeIntervalSince(lastShakeTime) < 1.0 {
-                // Prevents multiple shakes being detected within a short period
                 return
             }
         }

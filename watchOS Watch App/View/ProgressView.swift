@@ -16,7 +16,6 @@ struct ProgressView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                
                 if !showText {
                     Image("RBC")
                         .resizable()
@@ -53,8 +52,6 @@ struct ProgressView: View {
             .onAppear {
                 healthStore.requestAuthorization()
             }
-//            .navigationTitle("Iron Chef")
-//            .navigationBarTitleDisplayMode(.inline)
         }
     }
         
@@ -63,8 +60,3 @@ struct ProgressView: View {
         }
     }
     
-    //struct ContentView_Previews: PreviewProvider {
-    //    static var previews: some View {
-    //        ProgressView()
-    //    }
-    //}

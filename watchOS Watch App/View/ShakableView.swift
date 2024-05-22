@@ -57,6 +57,7 @@ struct ShakableView: View {
                 .padding(.top)
             }
         }
+        .frame(height: 190)
         
     }
     

@@ -39,3 +39,34 @@ struct DataElement: Identifiable {
     var date: Date
     var itemsComplete: Double
 }
+
+struct IngredientUsageRecord: Identifiable {
+    
+    let id = UUID()
+    let name: String
+    let timestamp: Date
+}
+
+class IngredientsRecords: ObservableObject {
+
+    @Published var usageRecords: [IngredientUsageRecord] = []
+    
+    func addUsageRecord(name: String) {
+        let newRecord = IngredientUsageRecord(name: name, timestamp: Date())
+        usageRecords.append(newRecord)
+    }
+    
+    var groupedRecords: [String: [IngredientUsageRecord]] {
+            Dictionary(grouping: usageRecords) { record in
+                let formatter = DateFormatter()
+                formatter.dateStyle = .none
+                formatter.timeStyle = .short
+                return formatter.string(from: record.timestamp)
+            }
+        }
+
+        var sortedGroupedRecords: [(key: String, value: [IngredientUsageRecord])] {
+            groupedRecords.sorted { $0.key > $1.key }
+        }
+}
+

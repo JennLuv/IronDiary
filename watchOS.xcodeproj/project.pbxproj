@@ -12,6 +12,7 @@
 		35097E682BFBB78300617C26 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35097E672BFBB78300617C26 /* CardView.swift */; };
 		35097E6B2BFBB92000617C26 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35097E6A2BFBB92000617C26 /* Ingredient.swift */; };
 		35097E6E2BFBC58800617C26 /* ShakableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35097E6D2BFBC58800617C26 /* ShakableView.swift */; };
+		3533ECA02BFDE68900157B07 /* IngredientsRecordsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3533EC9F2BFDE68900157B07 /* IngredientsRecordsView.swift */; };
 		35900C242BFCAD2700588A16 /* SuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35900C232BFCAD2700588A16 /* SuccessView.swift */; };
 		35900C262BFCF4C000588A16 /* IronConsumptionChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35900C252BFCF4C000588A16 /* IronConsumptionChartView.swift */; };
 		359B7C042BFA152300E16690 /* watchOS Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 359B7C032BFA152300E16690 /* watchOS Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -52,6 +53,7 @@
 		35097E672BFBB78300617C26 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		35097E6A2BFBB92000617C26 /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
 		35097E6D2BFBC58800617C26 /* ShakableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakableView.swift; sourceTree = "<group>"; };
+		3533EC9F2BFDE68900157B07 /* IngredientsRecordsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsRecordsView.swift; sourceTree = "<group>"; };
 		35900C232BFCAD2700588A16 /* SuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessView.swift; sourceTree = "<group>"; };
 		35900C252BFCF4C000588A16 /* IronConsumptionChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IronConsumptionChartView.swift; sourceTree = "<group>"; };
 		359B7BFD2BFA152300E16690 /* watchOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = watchOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -82,10 +84,9 @@
 				359B7C0A2BFA152300E16690 /* ContentView.swift */,
 				35097E6D2BFBC58800617C26 /* ShakableView.swift */,
 				35097E612BFBAF8100617C26 /* ProgressView.swift */,
-				35097E672BFBB78300617C26 /* CardView.swift */,
-				35900C232BFCAD2700588A16 /* SuccessView.swift */,
 				35900C252BFCF4C000588A16 /* IronConsumptionChartView.swift */,
-				35097E6C2BFBB92B00617C26 /* Model */,
+				3533EC9F2BFDE68900157B07 /* IngredientsRecordsView.swift */,
+				3533EC9E2BFDDA5A00157B07 /* Components */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -93,9 +94,20 @@
 		35097E6C2BFBB92B00617C26 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				359B7C1A2BFA153700E16690 /* HealthStore.swift */,
 				35097E6A2BFBB92000617C26 /* Ingredient.swift */,
+				35097E652BFBB67000617C26 /* ShakeController.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		3533EC9E2BFDDA5A00157B07 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				35900C232BFCAD2700588A16 /* SuccessView.swift */,
+				35097E672BFBB78300617C26 /* CardView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		359B7BF62BFA152200E16690 = {
@@ -122,8 +134,7 @@
 				359B7C1C2BFA17A200E16690 /* watchOS-Watch-App-Info.plist */,
 				359B7C082BFA152300E16690 /* watchOSApp.swift */,
 				35097E692BFBB79B00617C26 /* View */,
-				35097E652BFBB67000617C26 /* ShakeController.swift */,
-				359B7C1A2BFA153700E16690 /* HealthStore.swift */,
+				35097E6C2BFBB92B00617C26 /* Model */,
 				359B7C0C2BFA152400E16690 /* Assets.xcassets */,
 				359B7C0E2BFA152400E16690 /* Preview Content */,
 			);
@@ -243,6 +254,7 @@
 				35097E622BFBAF8100617C26 /* ProgressView.swift in Sources */,
 				35900C242BFCAD2700588A16 /* SuccessView.swift in Sources */,
 				35097E6B2BFBB92000617C26 /* Ingredient.swift in Sources */,
+				3533ECA02BFDE68900157B07 /* IngredientsRecordsView.swift in Sources */,
 				35097E6E2BFBC58800617C26 /* ShakableView.swift in Sources */,
 				359B7C1B2BFA153700E16690 /* HealthStore.swift in Sources */,
 				359B7C092BFA152300E16690 /* watchOSApp.swift in Sources */,

@@ -12,6 +12,7 @@ struct CardView: View {
     @Binding var ingredient: Ingredient
     @State private var isSheetPresented = false
     @Binding var fillLevel: Int
+    @EnvironmentObject var ingredientsRecords: IngredientsRecords
     
     var body: some View {
         
@@ -28,6 +29,7 @@ struct CardView: View {
             }
             Spacer()
             Button(action: {
+                saveUsageRecord()
                 playHaptic()
                 saveIronData()
                 isSheetPresented.toggle()
@@ -52,8 +54,8 @@ struct CardView: View {
         WKInterfaceDevice.current().play(.success)
     }
     
+    private func saveUsageRecord() {
+        ingredientsRecords.addUsageRecord(name: ingredient.ingredientDescription)
+        }
+    
 }
-
-//#Preview {
-//    CardView(ingredient: Ingredient(id: 1, imageName: "MeatImage", ingredientDescription: "10g of Beef", ironValue: 2))
-//}

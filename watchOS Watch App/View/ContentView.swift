@@ -16,14 +16,16 @@ struct ContentView: View {
     
     
     enum Tab {
-        case main, shakable, data
+        case main, shakable, records, data
     }
     
     var body: some View {
         TabView(selection: $selection) {
             ProgressView(fillLevel: $fillLevel).tag(Tab.main)
             ShakableView(ingredient: $ingredient, isRerolled: $isRerolled, fillLevel: $fillLevel).tag(Tab.shakable)
+            IngredientsRecordsView().tag(Tab.records)
             IronConsumptionChartView().tag(Tab.data)
+            
         }
         .tabViewStyle(.verticalPage)
         .onChange(of: isRerolled) { oldValue, newValue in
@@ -42,7 +44,3 @@ struct ContentView: View {
     }
     
 }
-
-//#Preview {
-//    ContentView()
-//}

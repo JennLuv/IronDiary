@@ -13,21 +13,16 @@ class HealthStore: NSObject, ObservableObject {
     let healthStore = HKHealthStore()
     let ironType = HKQuantityType.quantityType(forIdentifier: .dietaryIron)!
     
-    // Request authorization to access HealthKit.
     func requestAuthorization() {
 
         let typesToShare: Set = [
             HKCorrelationType.quantityType(forIdentifier: .dietaryIron)!
         ]
 
-        // The quantity types to read from the health store.
         let typesToRead: Set = [
-
             HKCorrelationType.quantityType(forIdentifier: .dietaryIron)!
-
         ]
 
-        // Request authorization for those quantity types.
         healthStore.requestAuthorization(toShare: typesToShare, read: typesToRead) { (success, error) in
         }
 
