@@ -24,6 +24,10 @@ struct ContentView: View {
         TabView(selection: $selection) {
             ProgressView(fillLevel: $fillLevel).tag(Tab.main)
             ShakableView(ingredient: $ingredient, isRerolled: $isRerolled, fillLevel: $fillLevel).tag(Tab.shakable)
+                .onChange(of: shakeController.isShaked) { oldValue, newValue in
+                    self.getRandomIngredient()
+                    playHaptic()
+                }
             IngredientsRecordsView().tag(Tab.records)
             IronConsumptionChartView().tag(Tab.data)
             
@@ -31,10 +35,6 @@ struct ContentView: View {
         .tabViewStyle(.verticalPage)
         .onChange(of: isRerolled) { oldValue, newValue in
             self.getRandomIngredient()
-        }
-        .onChange(of: shakeController.isShaked) { oldValue, newValue in
-            self.getRandomIngredient()
-            playHaptic()
         }
         
     }

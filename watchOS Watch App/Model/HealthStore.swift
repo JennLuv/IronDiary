@@ -28,6 +28,7 @@ class HealthStore: NSObject, ObservableObject {
 
     }
     
+    
     func saveIronData(ironValue: Double) {
             let ironQuantity = HKQuantity(unit: HKUnit.gramUnit(with: .milli), doubleValue: ironValue)
             let now = Date()
@@ -71,6 +72,28 @@ class HealthStore: NSObject, ObservableObject {
                 
                 DispatchQueue.main.async {
                     completion(dataElements)
+                }
+            }
+            
+            healthStore.execute(query)
+        }
+    
+    func fetchTotalIronConsumedToday(completion: @escaping (Double) -> Void) {
+            let calendar = Calendar.current
+            let startDate = calendar.startOfDay(for: Date())
+            let endDate = Date()
+            
+            let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictEndDate)
+            
+            let query = HKStatisticsQuery(quantityType: ironType, quantitySamplePredicate: predicate, options: .cumulativeSum) { query, result, error in
+                var totalIron: Double = 0.0
+                
+                if let result = result, let sum = result.sumQuantity() {
+                    totalIron = sum.doubleValue(for: .gramUnit(with: .milli))
+                }
+                
+                DispatchQueue.main.async {
+                    completion(totalIron)
                 }
             }
             

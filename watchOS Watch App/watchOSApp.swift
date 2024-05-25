@@ -9,17 +9,33 @@ import SwiftUI
 
 @main
 struct watchOS_Watch_AppApp: App {
+    @AppStorage("dailyIronGoal") private var dailyIronGoal: Int = 0
     @State private var healthStore = HealthStore()
-    @State var fillLevel: Int = 1
+    @State var fillLevel: Int = 0
     @StateObject var shakeController = ShakeController()
     @State private var ingredientRecords = IngredientsRecords()
     
     var body: some Scene {
         WindowGroup {
-            ContentView(fillLevel: $fillLevel, shakeController: shakeController)
+            if dailyIronGoal == 0 {
+                OnboardingView()
+                    .onAppear {
+                        healthStore.requestAuthorization()
+                        updateFillLevel()
+                    }
+            } else {
+                ContentView(fillLevel: $fillLevel, shakeController: shakeController)
+                
+            }
         }
         .environmentObject(ingredientRecords)
         .environmentObject(healthStore)
         
+    }
+    
+    private func updateFillLevel() {
+        healthStore.fetchTotalIronConsumedToday { totalIron in
+            fillLevel = Int(totalIron) // Assuming fillLevel is in mg
+        }
     }
 }

@@ -18,7 +18,7 @@ struct ShakableView: View {
     
     var body: some View {
         
-        ScrollView {
+//        ScrollView {
             VStack {
                 if ingredientisPresent {
                     CardView(ingredient: $ingredient, fillLevel: $fillLevel)
@@ -45,19 +45,19 @@ struct ShakableView: View {
                 
             }
             .frame(height: 190)
-            if ingredientisPresent {
-                Button(action: {
-                    isRerolled.toggle()
-                    ingredientisPresent = true
-                    playHaptic()
-                }) {
-                    Text("Reroll Ingredient")
-                }
-                .padding(.horizontal)
-                .padding(.top)
-            }
-        }
-        .frame(height: 190)
+//            if ingredientisPresent {
+//                Button(action: {
+//                    isRerolled.toggle()
+//                    ingredientisPresent = true
+//                    playHaptic()
+//                }) {
+//                    Text("Reroll Ingredient")
+//                }
+//                .padding(.horizontal)
+//                .padding(.top)
+//            }
+//        }
+//        .frame(height: 190)
         
     }
     
