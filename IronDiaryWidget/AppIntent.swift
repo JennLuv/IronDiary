@@ -12,8 +12,6 @@ struct ConfigurationAppIntent: WidgetConfigurationIntent {
     static var title: LocalizedStringResource = "Configuration"
     static var description = IntentDescription("Iron Diary widget.")
 
-    
-    // An example configurable parameter.
     @Parameter(title: "Iron Progress", default: 0)
     var ironProgress: Int
     

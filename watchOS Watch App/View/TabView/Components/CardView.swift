@@ -15,7 +15,6 @@ struct CardView: View {
     @EnvironmentObject var ingredientsRecords: IngredientsRecords
     
     var body: some View {
-        
         VStack{
             Spacer()
             VStack {

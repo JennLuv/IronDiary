@@ -19,6 +19,9 @@
 		358F4A2D2C02FD670041618A /* AppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358F4A2C2C02FD670041618A /* AppIntent.swift */; };
 		358F4A2F2C02FD690041618A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 358F4A2E2C02FD690041618A /* Assets.xcassets */; };
 		358F4A332C02FD690041618A /* IronDiaryWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 358F4A232C02FD670041618A /* IronDiaryWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		358F4A462C035ACC0041618A /* DataElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358F4A452C035ACC0041618A /* DataElement.swift */; };
+		358F4A482C035AEB0041618A /* IngredientUsageRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358F4A472C035AEB0041618A /* IngredientUsageRecord.swift */; };
+		358F4A4A2C035B0E0041618A /* IngredientsRecords.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358F4A492C035B0E0041618A /* IngredientsRecords.swift */; };
 		35900C242BFCAD2700588A16 /* SuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35900C232BFCAD2700588A16 /* SuccessView.swift */; };
 		35900C262BFCF4C000588A16 /* IronConsumptionChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35900C252BFCF4C000588A16 /* IronConsumptionChartView.swift */; };
 		359B7C042BFA152300E16690 /* watchOS Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 359B7C032BFA152300E16690 /* watchOS Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -87,6 +90,9 @@
 		358F4A2E2C02FD690041618A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		358F4A302C02FD690041618A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		358F4A3E2C0313570041618A /* IronDiaryWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = IronDiaryWidgetExtension.entitlements; sourceTree = "<group>"; };
+		358F4A452C035ACC0041618A /* DataElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataElement.swift; sourceTree = "<group>"; };
+		358F4A472C035AEB0041618A /* IngredientUsageRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientUsageRecord.swift; sourceTree = "<group>"; };
+		358F4A492C035B0E0041618A /* IngredientsRecords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsRecords.swift; sourceTree = "<group>"; };
 		35900C232BFCAD2700588A16 /* SuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessView.swift; sourceTree = "<group>"; };
 		35900C252BFCF4C000588A16 /* IronConsumptionChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IronConsumptionChartView.swift; sourceTree = "<group>"; };
 		359B7BFD2BFA152300E16690 /* watchOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = watchOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -136,6 +142,9 @@
 			children = (
 				359B7C1A2BFA153700E16690 /* HealthStore.swift */,
 				35097E6A2BFBB92000617C26 /* Ingredient.swift */,
+				358F4A492C035B0E0041618A /* IngredientsRecords.swift */,
+				358F4A472C035AEB0041618A /* IngredientUsageRecord.swift */,
+				358F4A452C035ACC0041618A /* DataElement.swift */,
 				35097E652BFBB67000617C26 /* ShakeController.swift */,
 			);
 			path = Model;
@@ -366,10 +375,13 @@
 				35097E682BFBB78300617C26 /* CardView.swift in Sources */,
 				35900C262BFCF4C000588A16 /* IronConsumptionChartView.swift in Sources */,
 				35097E662BFBB67000617C26 /* ShakeController.swift in Sources */,
+				358F4A462C035ACC0041618A /* DataElement.swift in Sources */,
 				359B7C0B2BFA152300E16690 /* ContentView.swift in Sources */,
+				358F4A482C035AEB0041618A /* IngredientUsageRecord.swift in Sources */,
 				35097E622BFBAF8100617C26 /* ProgressView.swift in Sources */,
 				35900C242BFCAD2700588A16 /* SuccessView.swift in Sources */,
 				35097E6B2BFBB92000617C26 /* Ingredient.swift in Sources */,
+				358F4A4A2C035B0E0041618A /* IngredientsRecords.swift in Sources */,
 				3533ECA02BFDE68900157B07 /* IngredientsRecordsView.swift in Sources */,
 				35097E6E2BFBC58800617C26 /* ShakableView.swift in Sources */,
 				35CD086F2C0197E30077144A /* OnboardingView.swift in Sources */,
