@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct watchOS_Watch_AppApp: App {
+struct IronDiary: App {
     @AppStorage("dailyIronGoal") private var dailyIronGoal: Int = 0
     @State private var healthStore = HealthStore()
     @State var fillLevel: Int = 0

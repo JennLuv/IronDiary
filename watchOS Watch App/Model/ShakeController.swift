@@ -44,4 +44,8 @@ class ShakeController: ObservableObject {
             self.isShaked.toggle()
         }
     }
+    
+    func stopDetectingShakes() {
+            motionManager.stopAccelerometerUpdates()
+        }
 }

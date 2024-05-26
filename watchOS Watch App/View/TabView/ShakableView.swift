@@ -17,49 +17,35 @@ struct ShakableView: View {
     @Binding var fillLevel: Int
     
     var body: some View {
-        
-//        ScrollView {
-            VStack {
-                if ingredientisPresent {
-                    CardView(ingredient: $ingredient, fillLevel: $fillLevel)
-                        .padding()
-                } else {
-                    Spacer()
-                    Text("Shake to choose an ingredient")
-                        .padding(.horizontal, 10)
-                    
-                    Spacer()
-                    Button(action: {
-                        isRerolled.toggle()
-                        ingredientisPresent = true
-                        playHaptic()
-                    }) {
-                        Text("Start")
-                    }
-                    .background(Color.accentColor)
-                    .cornerRadius(30)
-                    .padding(.horizontal)
-                    
-                    
+
+        VStack {
+            if ingredientisPresent {
+                CardView(ingredient: $ingredient, fillLevel: $fillLevel)
+                    .padding()
+            } else {
+                Spacer()
+                Text("Shake to choose an ingredient")
+                    .padding(.horizontal, 10)
+                
+                Spacer()
+                Button(action: {
+                    isRerolled.toggle()
+                    ingredientisPresent = true
+                    playHaptic()
+                }) {
+                    Text("Start")
                 }
+                .background(Color.accentColor)
+                .cornerRadius(30)
+                .padding(.horizontal)
                 
             }
-            .frame(height: 190)
-//            if ingredientisPresent {
-//                Button(action: {
-//                    isRerolled.toggle()
-//                    ingredientisPresent = true
-//                    playHaptic()
-//                }) {
-//                    Text("Reroll Ingredient")
-//                }
-//                .padding(.horizontal)
-//                .padding(.top)
-//            }
-//        }
-//        .frame(height: 190)
+            
+        }
+        .frame(height: 190)
         
     }
+    
     
     private func playHaptic() {
         WKInterfaceDevice.current().play(.directionUp)

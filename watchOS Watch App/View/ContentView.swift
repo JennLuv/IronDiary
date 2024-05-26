@@ -23,10 +23,19 @@ struct ContentView: View {
     var body: some View {
         TabView(selection: $selection) {
             ProgressView(fillLevel: $fillLevel).tag(Tab.main)
+                .onAppear {
+                    shakeController.stopDetectingShakes()
+                }
             ShakableView(ingredient: $ingredient, isRerolled: $isRerolled, fillLevel: $fillLevel).tag(Tab.shakable)
+                .onAppear {
+                    shakeController.startDetectingShakes()
+                }
                 .onChange(of: shakeController.isShaked) { oldValue, newValue in
                     self.getRandomIngredient()
                     playHaptic()
+                }
+                .onDisappear {
+                    shakeController.stopDetectingShakes()
                 }
             IngredientsRecordsView().tag(Tab.records)
             IronConsumptionChartView().tag(Tab.data)
