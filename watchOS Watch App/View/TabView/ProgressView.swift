@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import WidgetKit
 
 struct ProgressView: View {
     @EnvironmentObject var healthStore: HealthStore
@@ -13,6 +14,7 @@ struct ProgressView: View {
     @AppStorage("dailyIronGoal") var dailyIronGoal: Int = 18
     @State var showText: Bool = false
     @State private var isBouncing: Bool = false
+    
     
     var body: some View {
         NavigationStack {
@@ -70,6 +72,11 @@ struct ProgressView: View {
     private func updateFillLevel() {
         healthStore.fetchTotalIronConsumedToday { totalIron in
             fillLevel = Int(totalIron)
+            
+            if let sharedDefaults = UserDefaults(suiteName: "group.com.container.IronDiary") {
+                sharedDefaults.set(fillLevel, forKey: "sharedFillLevel")
+                WidgetCenter.shared.reloadAllTimelines()
+            }
         }
         
     }

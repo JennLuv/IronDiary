@@ -19,7 +19,6 @@
 		358F4A2D2C02FD670041618A /* AppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358F4A2C2C02FD670041618A /* AppIntent.swift */; };
 		358F4A2F2C02FD690041618A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 358F4A2E2C02FD690041618A /* Assets.xcassets */; };
 		358F4A332C02FD690041618A /* IronDiaryWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 358F4A232C02FD670041618A /* IronDiaryWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		358F4A442C033E6A0041618A /* HealthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358F4A432C033E6A0041618A /* HealthStore.swift */; };
 		35900C242BFCAD2700588A16 /* SuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35900C232BFCAD2700588A16 /* SuccessView.swift */; };
 		35900C262BFCF4C000588A16 /* IronConsumptionChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35900C252BFCF4C000588A16 /* IronConsumptionChartView.swift */; };
 		359B7C042BFA152300E16690 /* watchOS Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 359B7C032BFA152300E16690 /* watchOS Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -88,7 +87,6 @@
 		358F4A2E2C02FD690041618A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		358F4A302C02FD690041618A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		358F4A3E2C0313570041618A /* IronDiaryWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = IronDiaryWidgetExtension.entitlements; sourceTree = "<group>"; };
-		358F4A432C033E6A0041618A /* HealthStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStore.swift; sourceTree = "<group>"; };
 		35900C232BFCAD2700588A16 /* SuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessView.swift; sourceTree = "<group>"; };
 		35900C252BFCF4C000588A16 /* IronConsumptionChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IronConsumptionChartView.swift; sourceTree = "<group>"; };
 		359B7BFD2BFA152300E16690 /* watchOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = watchOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -178,7 +176,6 @@
 			children = (
 				358F4A2A2C02FD670041618A /* IronDiaryWidget.swift */,
 				358F4A2C2C02FD670041618A /* AppIntent.swift */,
-				358F4A432C033E6A0041618A /* HealthStore.swift */,
 				358F4A2E2C02FD690041618A /* Assets.xcassets */,
 				358F4A302C02FD690041618A /* Info.plist */,
 			);
@@ -358,7 +355,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				358F4A2B2C02FD670041618A /* IronDiaryWidget.swift in Sources */,
-				358F4A442C033E6A0041618A /* HealthStore.swift in Sources */,
 				358F4A2D2C02FD670041618A /* AppIntent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -410,7 +406,6 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = IronDiaryWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = IronDiaryWidget;
-				INFOPLIST_KEY_NSHealthShareUsageDescription = "the widget needs health data";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -442,7 +437,6 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = IronDiaryWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = IronDiaryWidget;
-				INFOPLIST_KEY_NSHealthShareUsageDescription = "the widget needs health data";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -30,12 +30,17 @@ struct IronDiary: App {
         }
         .environmentObject(ingredientRecords)
         .environmentObject(healthStore)
+        .defaultAppStorage(UserDefaults(suiteName: "group.com.container.IronDiary")!)
         
     }
     
     private func updateFillLevel() {
         healthStore.fetchTotalIronConsumedToday { totalIron in
-            fillLevel = Int(totalIron) // Assuming fillLevel is in mg
+            fillLevel = Int(totalIron)
+            
+            if let sharedDefaults = UserDefaults(suiteName: "group.com.container.IronDiary") {
+                sharedDefaults.set(fillLevel, forKey: "sharedFillLevel")
+            }
         }
     }
 }
