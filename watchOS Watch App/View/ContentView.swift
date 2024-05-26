@@ -26,7 +26,7 @@ struct ContentView: View {
                 .onAppear {
                     shakeController.stopDetectingShakes()
                 }
-            ShakableView(ingredient: $ingredient, isRerolled: $isRerolled, fillLevel: $fillLevel).tag(Tab.shakable)
+            ShakableView(ingredient: $ingredient, fillLevel: $fillLevel, shakeController: shakeController).tag(Tab.shakable)
                 .onAppear {
                     shakeController.startDetectingShakes()
                 }
@@ -38,7 +38,13 @@ struct ContentView: View {
                     shakeController.stopDetectingShakes()
                 }
             IngredientsRecordsView().tag(Tab.records)
+                .onAppear {
+                    shakeController.stopDetectingShakes()
+                }
             IronConsumptionChartView().tag(Tab.data)
+                .onAppear {
+                    shakeController.stopDetectingShakes()
+                }
             
         }
         .tabViewStyle(.verticalPage)

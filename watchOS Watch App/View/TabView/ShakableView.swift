@@ -13,8 +13,8 @@ struct ShakableView: View {
     
     @Binding var ingredient: Ingredient
     @State var ingredientisPresent: Bool = false
-    @Binding var isRerolled: Bool
     @Binding var fillLevel: Int
+    @ObservedObject var shakeController: ShakeController
     
     var body: some View {
 
@@ -23,26 +23,17 @@ struct ShakableView: View {
                 CardView(ingredient: $ingredient, fillLevel: $fillLevel)
                     .padding()
             } else {
-                Spacer()
                 Text("Shake to choose an ingredient")
                     .padding(.horizontal, 10)
-                
-                Spacer()
-                Button(action: {
-                    isRerolled.toggle()
-                    ingredientisPresent = true
-                    playHaptic()
-                }) {
-                    Text("Start")
-                }
-                .background(Color.accentColor)
-                .cornerRadius(30)
-                .padding(.horizontal)
-                
             }
             
         }
         .frame(height: 190)
+        .onReceive(shakeController.$isShaked, perform: { isShaken in
+            if isShaken {
+                ingredientisPresent = true
+            }
+        })
         
     }
     

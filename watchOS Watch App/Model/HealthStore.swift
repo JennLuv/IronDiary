@@ -7,6 +7,7 @@
 
 import Foundation
 import HealthKit
+import ClockKit
 
 class HealthStore: NSObject, ObservableObject {
     
@@ -79,25 +80,33 @@ class HealthStore: NSObject, ObservableObject {
         }
     
     func fetchTotalIronConsumedToday(completion: @escaping (Double) -> Void) {
-            let calendar = Calendar.current
-            let startDate = calendar.startOfDay(for: Date())
-            let endDate = Date()
+        let calendar = Calendar.current
+        let startDate = calendar.startOfDay(for: Date())
+        let endDate = Date()
+        
+        let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictEndDate)
+        
+        let query = HKStatisticsQuery(quantityType: ironType, quantitySamplePredicate: predicate, options: .cumulativeSum) { query, result, error in
+            var totalIron: Double = 0.0
             
-            let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictEndDate)
-            
-            let query = HKStatisticsQuery(quantityType: ironType, quantitySamplePredicate: predicate, options: .cumulativeSum) { query, result, error in
-                var totalIron: Double = 0.0
-                
-                if let result = result, let sum = result.sumQuantity() {
-                    totalIron = sum.doubleValue(for: .gramUnit(with: .milli))
-                }
-                
-                DispatchQueue.main.async {
-                    completion(totalIron)
-                }
+            if let result = result, let sum = result.sumQuantity() {
+                totalIron = sum.doubleValue(for: .gramUnit(with: .milli))
             }
             
-            healthStore.execute(query)
+            DispatchQueue.main.async {
+                completion(totalIron)
+            }
         }
+        
+        healthStore.execute(query)
+    }
+
+    private func reloadComplications() {
+            let server = CLKComplicationServer.sharedInstance()
+            for complication in server.activeComplications ?? [] {
+                server.reloadTimeline(for: complication)
+            }
+        }
+
     
 }
