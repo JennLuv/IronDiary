@@ -10,7 +10,7 @@ import SwiftUI
 struct ProgressView: View {
     @EnvironmentObject var healthStore: HealthStore
     @Binding var fillLevel: Int
-    @AppStorage("dailyIronGoal") private var dailyIronGoal: Int = 18 // Default value if not set
+    @AppStorage("dailyIronGoal") var dailyIronGoal: Int = 18
     @State var showText: Bool = false
     @State private var isBouncing: Bool = false
     
@@ -69,7 +69,9 @@ struct ProgressView: View {
     
     private func updateFillLevel() {
         healthStore.fetchTotalIronConsumedToday { totalIron in
-            fillLevel = Int(totalIron) // Assuming fillLevel is in mg
+            fillLevel = Int(totalIron)
         }
+        
     }
+    
 }

@@ -7,7 +7,6 @@
 
 import Foundation
 import HealthKit
-import ClockKit
 
 class HealthStore: NSObject, ObservableObject {
     
@@ -101,12 +100,6 @@ class HealthStore: NSObject, ObservableObject {
         healthStore.execute(query)
     }
 
-    private func reloadComplications() {
-            let server = CLKComplicationServer.sharedInstance()
-            for complication in server.activeComplications ?? [] {
-                server.reloadTimeline(for: complication)
-            }
-        }
 
     
 }
