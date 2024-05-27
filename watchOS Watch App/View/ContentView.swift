@@ -14,6 +14,7 @@ struct ContentView: View {
     @State var isRerolled: Bool = false
     @Binding var fillLevel: Int
     @ObservedObject var shakeController: ShakeController
+    @State var isShakableViewOn: Bool = false
     
     
     enum Tab {
@@ -23,28 +24,26 @@ struct ContentView: View {
     var body: some View {
         TabView(selection: $selection) {
             ProgressView(fillLevel: $fillLevel).tag(Tab.main)
-                .onAppear {
-                    shakeController.stopDetectingShakes()
-                }
+            
             ShakableView(ingredient: $ingredient, fillLevel: $fillLevel, shakeController: shakeController).tag(Tab.shakable)
                 .onAppear {
                     shakeController.startDetectingShakes()
+                    isShakableViewOn.toggle()
                 }
                 .onChange(of: shakeController.isShaked) { oldValue, newValue in
                     self.getRandomIngredient()
-                    playHaptic()
+                    if isShakableViewOn {
+                        playHaptic()
+                    }
                 }
                 .onDisappear {
                     shakeController.stopDetectingShakes()
+                    isShakableViewOn.toggle()
                 }
             IngredientsRecordsView().tag(Tab.records)
-                .onAppear {
-                    shakeController.stopDetectingShakes()
-                }
+                
             IronConsumptionChartView().tag(Tab.data)
-                .onAppear {
-                    shakeController.stopDetectingShakes()
-                }
+                
             
         }
         .tabViewStyle(.verticalPage)
