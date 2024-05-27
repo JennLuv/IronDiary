@@ -14,6 +14,7 @@ struct ProgressView: View {
     @AppStorage("dailyIronGoal") var dailyIronGoal: Int = 18
     @State var showText: Bool = false
     @State private var isBouncing: Bool = false
+    @ObservedObject var watchKitViewModel: WatchKitViewModel
     
     
     var body: some View {
@@ -28,7 +29,7 @@ struct ProgressView: View {
                                 Rectangle()
                                     .foregroundColor(.black)
                                     .opacity(0.6)
-                                    .frame(height: fillHeight(for: geometry.size.height))
+                                    .frame(height: healthStore.fillHeight(dailyIronGoal: dailyIronGoal, for: geometry.size.height))
                             }
                         )
                         .frame(height: 140)
@@ -46,7 +47,7 @@ struct ProgressView: View {
             .scaleEffect(isBouncing ? 1.05 : 1.0)
             .animation(.interpolatingSpring(stiffness: 170, damping: 15), value: isBouncing)
             .onTapGesture {
-                playHaptic()
+                watchKitViewModel.playHaptic()
                 withAnimation {
                     isBouncing.toggle()
                     showText.toggle()
@@ -55,30 +56,9 @@ struct ProgressView: View {
             }
             .onAppear {
                 healthStore.requestAuthorization()
-                updateFillLevel()
+                healthStore.updateFillLevel()
             }
         }
-    }
-    
-    private func fillHeight(for totalHeight: CGFloat) -> CGFloat {
-        return totalHeight * ((CGFloat(dailyIronGoal) - CGFloat(fillLevel)) / CGFloat(dailyIronGoal))
-    }
-    
-    private func playHaptic() {
-        WKInterfaceDevice.current().play(.click)
-    }
-    
-    
-    private func updateFillLevel() {
-        healthStore.fetchTotalIronConsumedToday { totalIron in
-            fillLevel = Int(totalIron)
-            
-            if let sharedDefaults = UserDefaults(suiteName: "group.com.container.IronDiary") {
-                sharedDefaults.set(fillLevel, forKey: "sharedFillLevel")
-                WidgetCenter.shared.reloadAllTimelines()
-            }
-        }
-        
     }
     
 }

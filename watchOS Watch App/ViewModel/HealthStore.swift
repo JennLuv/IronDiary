@@ -7,9 +7,10 @@
 
 import Foundation
 import HealthKit
+import WidgetKit
 
 class HealthStore: NSObject, ObservableObject {
-    
+    @Published var fillLevel: Int = 0
     let healthStore = HKHealthStore()
     let ironType = HKQuantityType.quantityType(forIdentifier: .dietaryIron)!
     
@@ -28,8 +29,11 @@ class HealthStore: NSObject, ObservableObject {
 
     }
     
+    func saveIronData(ingredient: Ingredient) {
+        saveIronData(ironValue: Double(ingredient.ironValue))
+    }
     
-    func saveIronData(ironValue: Double) {
+    private func saveIronData(ironValue: Double) {
             let ironQuantity = HKQuantity(unit: HKUnit.gramUnit(with: .milli), doubleValue: ironValue)
             let now = Date()
             let sample = HKQuantitySample(type: ironType, quantity: ironQuantity, start: now, end: now)
@@ -100,6 +104,21 @@ class HealthStore: NSObject, ObservableObject {
         healthStore.execute(query)
     }
 
-
+    func updateFillLevel() {
+        
+        fetchTotalIronConsumedToday { totalIron in
+            self.fillLevel = Int(totalIron)
+            
+            if let sharedDefaults = UserDefaults(suiteName: "group.com.container.IronDiary") {
+                sharedDefaults.set(self.fillLevel, forKey: "sharedFillLevel")
+                WidgetCenter.shared.reloadAllTimelines()
+            }
+        }
+        
+    }
+    
+    func fillHeight(dailyIronGoal: Int, for totalHeight: CGFloat) -> CGFloat {
+        return totalHeight * ((CGFloat(dailyIronGoal) - CGFloat(fillLevel)) / CGFloat(dailyIronGoal))
+    }
     
 }

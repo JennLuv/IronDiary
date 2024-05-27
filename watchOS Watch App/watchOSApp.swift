@@ -14,17 +14,18 @@ struct IronDiary: App {
     @State var fillLevel: Int = 0
     @StateObject var shakeController = ShakeController()
     @State private var ingredientRecords = IngredientsRecords()
+    @ObservedObject var watchKitViewModel = WatchKitViewModel()
     
     var body: some Scene {
         WindowGroup {
             if dailyIronGoal == 0 {
-                OnboardingView()
+                OnboardingView(watchKitViewModel: watchKitViewModel)
                     .onAppear {
                         healthStore.requestAuthorization()
                         updateFillLevel()
                     }
             } else {
-                ContentView(fillLevel: $fillLevel, shakeController: shakeController)
+                ContentView(healthStore: healthStore, shakeController: shakeController, watchKitViewModel: watchKitViewModel)
                 
             }
         }
