@@ -14,7 +14,7 @@ struct IngredientsRecordsView: View {
         List {
             ForEach(ingredientsRecords.sortedGroupedRecords, id: \.key) { section in
                 Section(header:
-                            Text(section.key)
+                    Text(section.key)
                     .foregroundStyle(Color.accentColor)
                     .bold()
                     .font(.subheadline)
