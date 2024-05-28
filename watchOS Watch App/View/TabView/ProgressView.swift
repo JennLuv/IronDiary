@@ -14,7 +14,6 @@ struct ProgressView: View {
     @AppStorage("dailyIronGoal") var dailyIronGoal: Int = 18
     @State var showText: Bool = false
     @State private var isBouncing: Bool = false
-    @ObservedObject var watchKitViewModel: WatchKitViewModel
     
     
     var body: some View {
@@ -47,7 +46,7 @@ struct ProgressView: View {
             .scaleEffect(isBouncing ? 1.05 : 1.0)
             .animation(.interpolatingSpring(stiffness: 170, damping: 15), value: isBouncing)
             .onTapGesture {
-                watchKitViewModel.playHaptic()
+                playHaptic()
                 withAnimation {
                     isBouncing.toggle()
                     showText.toggle()
@@ -59,6 +58,10 @@ struct ProgressView: View {
                 healthStore.updateFillLevel()
             }
         }
+    }
+    
+    private func playHaptic() {
+        WKInterfaceDevice.current().play(.click)
     }
     
 }

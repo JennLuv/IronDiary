@@ -15,13 +15,12 @@ struct ShakableView: View {
     @State var ingredientisPresent: Bool = false
     @Binding var fillLevel: Int
     @ObservedObject var shakeController: ShakeController
-    @ObservedObject var watchKitViewModel: WatchKitViewModel
     
     var body: some View {
 
         VStack {
             if ingredientisPresent {
-                CardView(ingredient: $ingredient, fillLevel: $fillLevel, watchKitViewModel: watchKitViewModel)
+                CardView(ingredient: $ingredient, fillLevel: $fillLevel)
                     .padding()
             } else {
                 Text("Shake to choose an ingredient")

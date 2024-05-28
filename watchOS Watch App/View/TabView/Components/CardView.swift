@@ -13,7 +13,6 @@ struct CardView: View {
     @State private var isSheetPresented = false
     @Binding var fillLevel: Int
     @EnvironmentObject var ingredientsRecords: IngredientsRecords
-    @ObservedObject var watchKitViewModel: WatchKitViewModel
     
     var body: some View {
         VStack{
@@ -30,7 +29,7 @@ struct CardView: View {
             Spacer()
             Button(action: {
                 ingredientsRecords.saveUsageRecord(ingredient: ingredient)
-                watchKitViewModel.playHaptic()
+                playHaptic()
                 healthStore.saveIronData(ingredient: ingredient)
                 isSheetPresented.toggle()
                 fillLevel = fillLevel + ingredient.ironValue
@@ -44,6 +43,11 @@ struct CardView: View {
             })
         }
         .frame(height: 190)
+    }
+    
+    
+    private func playHaptic() {
+        WKInterfaceDevice.current().play(.success)
     }
     
 }

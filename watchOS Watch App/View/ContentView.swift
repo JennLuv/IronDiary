@@ -15,13 +15,12 @@ struct ContentView: View {
     @ObservedObject var shakeController: ShakeController
     @State var isShakableViewOn: Bool = false
     @ObservedObject var ingredientViewModel = IngredientViewModel(ingredient: Ingredient(id: 1, imageName: "MeatImage", ingredientDescription: "100g of Beef", ironValue: 3))
-    @ObservedObject var watchKitViewModel: WatchKitViewModel
     
     var body: some View {
         TabView(selection: $selection) {
-            ProgressView(fillLevel: $healthStore.fillLevel, watchKitViewModel: watchKitViewModel).tag(Tab.main)
+            ProgressView(fillLevel: $healthStore.fillLevel).tag(Tab.main)
             
-            ShakableView(ingredient: $ingredientViewModel.ingredient, fillLevel: $healthStore.fillLevel, shakeController: shakeController, watchKitViewModel: watchKitViewModel).tag(Tab.shakable)
+            ShakableView(ingredient: $ingredientViewModel.ingredient, fillLevel: $healthStore.fillLevel, shakeController: shakeController).tag(Tab.shakable)
                 .onAppear {
                     shakeController.startDetectingShakes()
                     isShakableViewOn.toggle()
@@ -29,7 +28,7 @@ struct ContentView: View {
                 .onChange(of: shakeController.isShaked) { oldValue, newValue in
                     ingredientViewModel.getRandomIngredient()
                     if isShakableViewOn {
-                        watchKitViewModel.playHaptic()
+                        playHaptic()
                     }
                 }
                 .onDisappear {
@@ -49,5 +48,8 @@ struct ContentView: View {
         
     }
     
+    private func playHaptic() {
+        WKInterfaceDevice.current().play(.directionUp)
+    }
     
 }

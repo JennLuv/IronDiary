@@ -24,7 +24,6 @@
 		358F4A4A2C035B0E0041618A /* IngredientsRecords.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358F4A492C035B0E0041618A /* IngredientsRecords.swift */; };
 		358F4A4E2C048D4C0041618A /* IngredientViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358F4A4D2C048D4C0041618A /* IngredientViewModel.swift */; };
 		358F4A502C048E2F0041618A /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358F4A4F2C048E2F0041618A /* Tab.swift */; };
-		358F4A522C049E350041618A /* WatchKitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358F4A512C049E350041618A /* WatchKitViewModel.swift */; };
 		35900C242BFCAD2700588A16 /* SuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35900C232BFCAD2700588A16 /* SuccessView.swift */; };
 		35900C262BFCF4C000588A16 /* IronConsumptionChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35900C252BFCF4C000588A16 /* IronConsumptionChartView.swift */; };
 		359B7C042BFA152300E16690 /* watchOS Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 359B7C032BFA152300E16690 /* watchOS Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -98,7 +97,6 @@
 		358F4A492C035B0E0041618A /* IngredientsRecords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsRecords.swift; sourceTree = "<group>"; };
 		358F4A4D2C048D4C0041618A /* IngredientViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientViewModel.swift; sourceTree = "<group>"; };
 		358F4A4F2C048E2F0041618A /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
-		358F4A512C049E350041618A /* WatchKitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchKitViewModel.swift; sourceTree = "<group>"; };
 		35900C232BFCAD2700588A16 /* SuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessView.swift; sourceTree = "<group>"; };
 		35900C252BFCF4C000588A16 /* IronConsumptionChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IronConsumptionChartView.swift; sourceTree = "<group>"; };
 		359B7BFD2BFA152300E16690 /* watchOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = watchOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -202,7 +200,6 @@
 				358F4A492C035B0E0041618A /* IngredientsRecords.swift */,
 				358F4A4D2C048D4C0041618A /* IngredientViewModel.swift */,
 				35097E652BFBB67000617C26 /* ShakeController.swift */,
-				358F4A512C049E350041618A /* WatchKitViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -400,7 +397,6 @@
 				35900C242BFCAD2700588A16 /* SuccessView.swift in Sources */,
 				35097E6B2BFBB92000617C26 /* Ingredient.swift in Sources */,
 				358F4A4E2C048D4C0041618A /* IngredientViewModel.swift in Sources */,
-				358F4A522C049E350041618A /* WatchKitViewModel.swift in Sources */,
 				358F4A4A2C035B0E0041618A /* IngredientsRecords.swift in Sources */,
 				3533ECA02BFDE68900157B07 /* IngredientsRecordsView.swift in Sources */,
 				35097E6E2BFBC58800617C26 /* ShakableView.swift in Sources */,

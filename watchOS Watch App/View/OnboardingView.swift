@@ -10,7 +10,6 @@ import SwiftUI
 struct OnboardingView: View {
     @AppStorage("dailyIronGoal") private var dailyIronGoal: Int = 0
     @State private var selectedGoal: Int = 18
-    @ObservedObject var watchKitViewModel: WatchKitViewModel
     
     var body: some View {
         VStack {
@@ -30,7 +29,7 @@ struct OnboardingView: View {
 
             Button(action: {
                 dailyIronGoal = selectedGoal
-                watchKitViewModel.playHaptic()
+                playHaptic()
             }) {
                 Text("Save")
                     .bold()
@@ -45,6 +44,13 @@ struct OnboardingView: View {
         .navigationTitle("Onboarding")
     }
     
+    private func playHaptic() {
+        WKInterfaceDevice.current().play(.start)
+    }
 }
 
-
+struct OnboardingView_Previews: PreviewProvider {
+    static var previews: some View {
+        OnboardingView()
+    }
+}
