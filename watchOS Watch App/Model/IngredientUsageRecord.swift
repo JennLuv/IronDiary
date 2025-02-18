@@ -8,14 +8,7 @@
 import SwiftUI
 
 struct IngredientUsageRecord: Identifiable, Codable, Equatable {
-    
     var id = UUID()
     let name: String
     let timestamp: Date
-    
-    init(name: String, timestamp: Date) {
-            self.id = UUID()
-            self.name = name
-            self.timestamp = timestamp
-        }
 }

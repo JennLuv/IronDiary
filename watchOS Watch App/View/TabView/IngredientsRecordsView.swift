@@ -12,9 +12,10 @@ struct IngredientsRecordsView: View {
     
     var body: some View {
         List {
+            //TODO: nested mungkin bisa lebih di
             ForEach(ingredientsRecords.sortedGroupedRecords, id: \.key) { section in
                 Section(header:
-                            Text(section.key)
+                    Text(section.key)
                     .foregroundStyle(Color.accentColor)
                     .bold()
                     .font(.subheadline)

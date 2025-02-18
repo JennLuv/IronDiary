@@ -36,10 +36,4 @@ struct ShakableView: View {
         })
         
     }
-    
-    
-    private func playHaptic() {
-        WKInterfaceDevice.current().play(.directionUp)
-    }
-    
 }

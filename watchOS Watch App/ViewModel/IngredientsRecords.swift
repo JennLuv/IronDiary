@@ -20,7 +20,7 @@ class IngredientsRecords: ObservableObject {
         loadUsageRecords()
     }
 
-    func addUsageRecord(name: String) {
+    private func addUsageRecord(name: String) {
         let newRecord = IngredientUsageRecord(name: name, timestamp: Date())
         usageRecords.append(newRecord)
     }
@@ -54,6 +54,10 @@ class IngredientsRecords: ObservableObject {
         } catch {
             print("Failed to load usage records: \(error.localizedDescription)")
         }
+    }
+    
+    func saveUsageRecord(ingredient: Ingredient) {
+        addUsageRecord(name: ingredient.ingredientDescription)
     }
 }
 

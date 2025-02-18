@@ -28,9 +28,9 @@ struct CardView: View {
             }
             Spacer()
             Button(action: {
-                saveUsageRecord()
+                ingredientsRecords.saveUsageRecord(ingredient: ingredient)
                 playHaptic()
-                saveIronData()
+                healthStore.saveIronData(ingredient: ingredient)
                 isSheetPresented.toggle()
                 fillLevel = fillLevel + ingredient.ironValue
             }, label: {
@@ -45,16 +45,9 @@ struct CardView: View {
         .frame(height: 190)
     }
     
-    private func saveIronData() {
-        healthStore.saveIronData(ironValue: Double(ingredient.ironValue))
-    }
     
     private func playHaptic() {
         WKInterfaceDevice.current().play(.success)
     }
-    
-    private func saveUsageRecord() {
-        ingredientsRecords.addUsageRecord(name: ingredient.ingredientDescription)
-        }
     
 }

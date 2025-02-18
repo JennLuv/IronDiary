@@ -22,6 +22,8 @@
 		358F4A462C035ACC0041618A /* DataElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358F4A452C035ACC0041618A /* DataElement.swift */; };
 		358F4A482C035AEB0041618A /* IngredientUsageRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358F4A472C035AEB0041618A /* IngredientUsageRecord.swift */; };
 		358F4A4A2C035B0E0041618A /* IngredientsRecords.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358F4A492C035B0E0041618A /* IngredientsRecords.swift */; };
+		358F4A4E2C048D4C0041618A /* IngredientViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358F4A4D2C048D4C0041618A /* IngredientViewModel.swift */; };
+		358F4A502C048E2F0041618A /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358F4A4F2C048E2F0041618A /* Tab.swift */; };
 		35900C242BFCAD2700588A16 /* SuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35900C232BFCAD2700588A16 /* SuccessView.swift */; };
 		35900C262BFCF4C000588A16 /* IronConsumptionChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35900C252BFCF4C000588A16 /* IronConsumptionChartView.swift */; };
 		359B7C042BFA152300E16690 /* watchOS Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 359B7C032BFA152300E16690 /* watchOS Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -93,6 +95,8 @@
 		358F4A452C035ACC0041618A /* DataElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataElement.swift; sourceTree = "<group>"; };
 		358F4A472C035AEB0041618A /* IngredientUsageRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientUsageRecord.swift; sourceTree = "<group>"; };
 		358F4A492C035B0E0041618A /* IngredientsRecords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsRecords.swift; sourceTree = "<group>"; };
+		358F4A4D2C048D4C0041618A /* IngredientViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientViewModel.swift; sourceTree = "<group>"; };
+		358F4A4F2C048E2F0041618A /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
 		35900C232BFCAD2700588A16 /* SuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessView.swift; sourceTree = "<group>"; };
 		35900C252BFCF4C000588A16 /* IronConsumptionChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IronConsumptionChartView.swift; sourceTree = "<group>"; };
 		359B7BFD2BFA152300E16690 /* watchOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = watchOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -140,12 +144,10 @@
 		35097E6C2BFBB92B00617C26 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				359B7C1A2BFA153700E16690 /* HealthStore.swift */,
 				35097E6A2BFBB92000617C26 /* Ingredient.swift */,
-				358F4A492C035B0E0041618A /* IngredientsRecords.swift */,
+				358F4A4F2C048E2F0041618A /* Tab.swift */,
 				358F4A472C035AEB0041618A /* IngredientUsageRecord.swift */,
 				358F4A452C035ACC0041618A /* DataElement.swift */,
-				35097E652BFBB67000617C26 /* ShakeController.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -191,6 +193,17 @@
 			path = IronDiaryWidget;
 			sourceTree = "<group>";
 		};
+		358F4A4C2C048C1A0041618A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				359B7C1A2BFA153700E16690 /* HealthStore.swift */,
+				358F4A492C035B0E0041618A /* IngredientsRecords.swift */,
+				358F4A4D2C048D4C0041618A /* IngredientViewModel.swift */,
+				35097E652BFBB67000617C26 /* ShakeController.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		359B7BF62BFA152200E16690 = {
 			isa = PBXGroup;
 			children = (
@@ -218,8 +231,9 @@
 				359B7C1D2BFA17A700E16690 /* watchOS Watch App.entitlements */,
 				359B7C1C2BFA17A200E16690 /* watchOS-Watch-App-Info.plist */,
 				359B7C082BFA152300E16690 /* watchOSApp.swift */,
-				35097E692BFBB79B00617C26 /* View */,
 				35097E6C2BFBB92B00617C26 /* Model */,
+				35097E692BFBB79B00617C26 /* View */,
+				358F4A4C2C048C1A0041618A /* ViewModel */,
 				359B7C0C2BFA152400E16690 /* Assets.xcassets */,
 				359B7C0E2BFA152400E16690 /* Preview Content */,
 			);
@@ -373,6 +387,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				35097E682BFBB78300617C26 /* CardView.swift in Sources */,
+				358F4A502C048E2F0041618A /* Tab.swift in Sources */,
 				35900C262BFCF4C000588A16 /* IronConsumptionChartView.swift in Sources */,
 				35097E662BFBB67000617C26 /* ShakeController.swift in Sources */,
 				358F4A462C035ACC0041618A /* DataElement.swift in Sources */,
@@ -381,6 +396,7 @@
 				35097E622BFBAF8100617C26 /* ProgressView.swift in Sources */,
 				35900C242BFCAD2700588A16 /* SuccessView.swift in Sources */,
 				35097E6B2BFBB92000617C26 /* Ingredient.swift in Sources */,
+				358F4A4E2C048D4C0041618A /* IngredientViewModel.swift in Sources */,
 				358F4A4A2C035B0E0041618A /* IngredientsRecords.swift in Sources */,
 				3533ECA02BFDE68900157B07 /* IngredientsRecordsView.swift in Sources */,
 				35097E6E2BFBC58800617C26 /* ShakableView.swift in Sources */,

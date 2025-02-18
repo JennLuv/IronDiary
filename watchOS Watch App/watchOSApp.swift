@@ -24,7 +24,7 @@ struct IronDiary: App {
                         updateFillLevel()
                     }
             } else {
-                ContentView(fillLevel: $fillLevel, shakeController: shakeController)
+                ContentView(healthStore: healthStore, shakeController: shakeController)
                 
             }
         }
