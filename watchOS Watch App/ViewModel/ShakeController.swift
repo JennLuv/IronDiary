@@ -31,7 +31,7 @@ class ShakeController: ObservableObject {
         }
     }
 
-    private func handleShakeEvent() {
+    func handleShakeEvent() {
         let now = Date()
         if let lastShakeTime = lastShakeTime {
             if now.timeIntervalSince(lastShakeTime) < 0.3 {

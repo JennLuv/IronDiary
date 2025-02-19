@@ -11,25 +11,28 @@ struct IngredientsRecordsView: View {
     @EnvironmentObject var ingredientsRecords: IngredientsRecords
     
     var body: some View {
-        List {
-            //TODO: nested mungkin bisa lebih di
-            ForEach(ingredientsRecords.sortedGroupedRecords, id: \.key) { section in
-                Section(header:
-                    Text(section.key)
-                    .foregroundStyle(Color.accentColor)
-                    .bold()
-                    .font(.subheadline)
-                        
-                ) {
-                    ForEach(section.value) { record in
-                        VStack(alignment: .leading) {
-                            Text(record.name)
+        if ingredientsRecords.sortedGroupedRecords.isEmpty {
+            Text("Start by consuming an ingredient")
+        } else {
+            List {
+                ForEach(ingredientsRecords.sortedGroupedRecords, id: \.key) { section in
+                    Section(header:
+                                Text(section.key)
+                        .foregroundStyle(Color.accentColor)
+                        .bold()
+                        .font(.subheadline)
+                            
+                    ) {
+                        ForEach(section.value) { record in
+                            VStack(alignment: .leading) {
+                                Text(record.name)
+                            }
                         }
                     }
                 }
             }
+            .listStyle(.carousel)
         }
-        .listStyle(.carousel)
         
     }
 }

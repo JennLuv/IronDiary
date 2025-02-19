@@ -9,15 +9,22 @@ import SwiftUI
 
 struct SuccessView: View {
     @Binding var ingredient: Ingredient
+
     var body: some View {
-        VStack{
+        VStack {
             Image("RBCSmile")
                 .resizable()
                 .scaledToFit()
-                .frame(height:100)
+                .frame(height: 100)
             Spacer()
             Text("Your iron went up by \(ingredient.ironValue) mg!")
+                .font(.system(size: 24))
+                .minimumScaleFactor(0.5)
+                .lineLimit(1)
+                .multilineTextAlignment(.center)
+                .padding()
         }
     }
 }
+
 

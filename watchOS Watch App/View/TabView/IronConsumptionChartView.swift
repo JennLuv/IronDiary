@@ -43,26 +43,30 @@ struct IronConsumptionChartView: View {
     var body: some View {
         
         VStack {
-            Chart(data) { dataPoint in
-                BarMark(
-                    x: .value("Time", dataPoint.date, unit: .hour),
-                    y: .value("Iron (mg)", dataPoint.itemsComplete)
-                )
-                .foregroundStyle(Color.accentColor)
-                .cornerRadius(30, style: .circular)
-            }
-            .frame(height: 100)
-            
-            HStack {
-                Text(currentDate)
-                    .font(.title3)
+            if data.isEmpty {
+                Text("Start by consuming an ingredient")
+            } else {
+                Chart(data) { dataPoint in
+                    BarMark(
+                        x: .value("Time", dataPoint.date, unit: .hour),
+                        y: .value("Iron (mg)", dataPoint.itemsComplete)
+                    )
+                    .foregroundStyle(Color.accentColor)
+                    .cornerRadius(30, style: .circular)
+                }
+                .frame(height: 100)
+                
+                HStack {
+                    Text(currentDate)
+                        .font(.title3)
+                    Spacer()
+                }
                 Spacer()
-            }
-            Spacer()
-            HStack {
-                Text(timeRangeText)
-                    .foregroundStyle(Color.gray)
-                Spacer()
+                HStack {
+                    Text(timeRangeText)
+                        .foregroundStyle(Color.gray)
+                    Spacer()
+                }
             }
         }
         .padding(.trailing, 15)

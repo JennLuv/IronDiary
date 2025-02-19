@@ -17,23 +17,36 @@ struct ShakableView: View {
     @ObservedObject var shakeController: ShakeController
     
     var body: some View {
-
-        VStack {
-            if ingredientisPresent {
-                CardView(ingredient: $ingredient, fillLevel: $fillLevel)
-                    .padding()
-            } else {
-                Text("Shake to choose an ingredient")
-                    .padding(.horizontal, 10)
+        ScrollView{
+            VStack {
+                Spacer()
+                if ingredientisPresent {
+                    CardView(ingredient: $ingredient, fillLevel: $fillLevel)
+                        .padding()
+                } else {
+                    Text("Shake to choose an ingredient")
+                        .padding(.horizontal, 10)
+                }
+                Spacer()
+                Button(action: {
+                    shakeController.handleShakeEvent()
+                    print(shakeController.isShaked)
+                }) {
+                    Text("Simulate Shake")
+                }
+                .background(Color.accentColor)
+                .opacity(0.5)
+                .cornerRadius(30)
+                Spacer()
+                
             }
-            
+            .frame(height: 190)
+            .onReceive(shakeController.$isShaked, perform: { isShaken in
+                if isShaken {
+                    ingredientisPresent = true
+                }
+            })
         }
-        .frame(height: 190)
-        .onReceive(shakeController.$isShaked, perform: { isShaken in
-            if isShaken {
-                ingredientisPresent = true
-            }
-        })
         
     }
 }

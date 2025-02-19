@@ -9,7 +9,8 @@ import SwiftUI
 
 @main
 struct IronDiary: App {
-    @AppStorage("dailyIronGoal") private var dailyIronGoal: Int = 0
+    @AppStorage("dailyIronGoal", store: UserDefaults(suiteName: "group.com.container.IronDiary"))
+    private var dailyIronGoal: Int = 0
     @State private var healthStore = HealthStore()
     @State var fillLevel: Int = 0
     @StateObject var shakeController = ShakeController()

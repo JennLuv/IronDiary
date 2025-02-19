@@ -13,29 +13,28 @@ struct ContentView: View {
     @State var isRerolled: Bool = false
     @ObservedObject var healthStore: HealthStore
     @ObservedObject var shakeController: ShakeController
-    @State var isShakableViewOn: Bool = false
     @ObservedObject var ingredientViewModel = IngredientViewModel(ingredient: Ingredient(id: 1, imageName: "MeatImage", ingredientDescription: "100g of Beef", ironValue: 3))
     
     var body: some View {
         TabView(selection: $selection) {
             ProgressView(fillLevel: $healthStore.fillLevel).tag(Tab.main)
+                .onAppear{
+                    shakeController.stopDetectingShakes()
+                }
             
             ShakableView(ingredient: $ingredientViewModel.ingredient, fillLevel: $healthStore.fillLevel, shakeController: shakeController).tag(Tab.shakable)
                 .onAppear {
                     shakeController.startDetectingShakes()
-                    isShakableViewOn.toggle()
                 }
                 .onChange(of: shakeController.isShaked) { oldValue, newValue in
                     ingredientViewModel.getRandomIngredient()
-                    if isShakableViewOn {
-                        playHaptic()
-                    }
+                    playHaptic()
                 }
-                .onDisappear {
-                    shakeController.stopDetectingShakes()
-                    isShakableViewOn.toggle()
-                }
+            
             IngredientsRecordsView().tag(Tab.records)
+                .onAppear{
+                    shakeController.stopDetectingShakes()
+                }
                 
             IronConsumptionChartView().tag(Tab.data)
                 

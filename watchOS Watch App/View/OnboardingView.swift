@@ -8,14 +8,16 @@
 import SwiftUI
 
 struct OnboardingView: View {
-    @AppStorage("dailyIronGoal") private var dailyIronGoal: Int = 0
+    @AppStorage("dailyIronGoal", store: UserDefaults(suiteName: "group.com.container.IronDiary"))
+    private var dailyIronGoal: Int = 0
+
     @State private var selectedGoal: Int = 18
     
     var body: some View {
         VStack {
             Text("Set Your Daily Goal")
                 .font(.headline)
-                .padding()
+                .padding(.top)
 
             Picker("Daily Iron Goal", selection: $selectedGoal) {
                 ForEach(1..<101) { value in
@@ -39,7 +41,7 @@ struct OnboardingView: View {
             .background(Color.accentColor)
             .foregroundColor(.white)
             .cornerRadius(30)
-            .padding()
+            .padding(.top, 5)
         }
         .navigationTitle("Onboarding")
     }
