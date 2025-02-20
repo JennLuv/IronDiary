@@ -12,6 +12,7 @@
 		35097E682BFBB78300617C26 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35097E672BFBB78300617C26 /* CardView.swift */; };
 		35097E6B2BFBB92000617C26 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35097E6A2BFBB92000617C26 /* Ingredient.swift */; };
 		35097E6E2BFBC58800617C26 /* ShakableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35097E6D2BFBC58800617C26 /* ShakableView.swift */; };
+		351A916D2D66DA8200264E8B /* NoDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351A916C2D66DA7D00264E8B /* NoDataView.swift */; };
 		3533ECA02BFDE68900157B07 /* IngredientsRecordsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3533EC9F2BFDE68900157B07 /* IngredientsRecordsView.swift */; };
 		358F4A262C02FD670041618A /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 358F4A252C02FD670041618A /* WidgetKit.framework */; };
 		358F4A282C02FD670041618A /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 358F4A272C02FD670041618A /* SwiftUI.framework */; };
@@ -83,6 +84,7 @@
 		35097E672BFBB78300617C26 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		35097E6A2BFBB92000617C26 /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
 		35097E6D2BFBC58800617C26 /* ShakableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakableView.swift; sourceTree = "<group>"; };
+		351A916C2D66DA7D00264E8B /* NoDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoDataView.swift; sourceTree = "<group>"; };
 		3533EC9F2BFDE68900157B07 /* IngredientsRecordsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsRecordsView.swift; sourceTree = "<group>"; };
 		358F4A232C02FD670041618A /* IronDiaryWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = IronDiaryWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		358F4A252C02FD670041618A /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
@@ -135,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				359B7C0A2BFA152300E16690 /* ContentView.swift */,
+				351A916C2D66DA7D00264E8B /* NoDataView.swift */,
 				35CD086E2C0197E30077144A /* OnboardingView.swift */,
 				3533ECA12BFDEBA000157B07 /* TabView */,
 			);
@@ -393,6 +396,7 @@
 				358F4A462C035ACC0041618A /* DataElement.swift in Sources */,
 				359B7C0B2BFA152300E16690 /* ContentView.swift in Sources */,
 				358F4A482C035AEB0041618A /* IngredientUsageRecord.swift in Sources */,
+				351A916D2D66DA8200264E8B /* NoDataView.swift in Sources */,
 				35097E622BFBAF8100617C26 /* ProgressView.swift in Sources */,
 				35900C242BFCAD2700588A16 /* SuccessView.swift in Sources */,
 				35097E6B2BFBB92000617C26 /* Ingredient.swift in Sources */,

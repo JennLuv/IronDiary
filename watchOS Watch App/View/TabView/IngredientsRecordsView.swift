@@ -12,7 +12,7 @@ struct IngredientsRecordsView: View {
     
     var body: some View {
         if ingredientsRecords.sortedGroupedRecords.isEmpty {
-            Text("Start by consuming an ingredient")
+            NoDataView()
         } else {
             List {
                 ForEach(ingredientsRecords.sortedGroupedRecords, id: \.key) { section in

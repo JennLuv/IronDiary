@@ -44,7 +44,7 @@ struct IronConsumptionChartView: View {
         
         VStack {
             if data.isEmpty {
-                Text("Start by consuming an ingredient")
+                NoDataView()
             } else {
                 Chart(data) { dataPoint in
                     BarMark(
@@ -69,7 +69,6 @@ struct IronConsumptionChartView: View {
                 }
             }
         }
-        .padding(.trailing, 15)
         .frame(height: 160)
         .onAppear {
             healthStore.fetchIronData { fetchedData in
