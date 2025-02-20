@@ -10,7 +10,6 @@ import WatchKit
 
 struct ContentView: View {
     @State private var selection: Tab = .main
-    @State var isRerolled: Bool = false
     @ObservedObject var healthStore: HealthStore
     @ObservedObject var shakeController: ShakeController
     @ObservedObject var ingredientViewModel = IngredientViewModel(ingredient: Ingredient(id: 1, imageName: "MeatImage", ingredientDescription: "100g of Beef", ironValue: 3))
@@ -22,13 +21,10 @@ struct ContentView: View {
                     shakeController.stopDetectingShakes()
                 }
             
-            ShakableView(ingredient: $ingredientViewModel.ingredient, fillLevel: $healthStore.fillLevel, shakeController: shakeController).tag(Tab.shakable)
+            ShakableView(ingredientViewModel: ingredientViewModel, fillLevel: $healthStore.fillLevel, shakeController: shakeController)
+                .tag(Tab.shakable)
                 .onAppear {
                     shakeController.startDetectingShakes()
-                }
-                .onChange(of: shakeController.isShaked) { oldValue, newValue in
-                    ingredientViewModel.getRandomIngredient()
-                    playHaptic()
                 }
             
             IngredientsRecordsView().tag(Tab.records)
@@ -41,14 +37,7 @@ struct ContentView: View {
             
         }
         .tabViewStyle(.verticalPage)
-        .onChange(of: isRerolled) { oldValue, newValue in
-            ingredientViewModel.getRandomIngredient()
-        }
         
-    }
-    
-    private func playHaptic() {
-        WKInterfaceDevice.current().play(.directionUp)
     }
     
 }

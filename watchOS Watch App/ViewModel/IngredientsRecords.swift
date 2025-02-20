@@ -24,9 +24,15 @@ class IngredientsRecords: ObservableObject {
         let newRecord = IngredientUsageRecord(name: name, timestamp: Date())
         usageRecords.append(newRecord)
     }
-
+    
     var groupedRecords: [String: [IngredientUsageRecord]] {
-        Dictionary(grouping: usageRecords) { record in
+        let today = Calendar.current.startOfDay(for: Date())
+        
+        let todayRecords = usageRecords.filter { record in
+            Calendar.current.isDate(record.timestamp, inSameDayAs: today)
+        }
+
+        return Dictionary(grouping: todayRecords) { record in
             let formatter = DateFormatter()
             formatter.dateStyle = .none
             formatter.timeStyle = .short
@@ -37,6 +43,7 @@ class IngredientsRecords: ObservableObject {
     var sortedGroupedRecords: [(key: String, value: [IngredientUsageRecord])] {
         groupedRecords.sorted { $0.key > $1.key }
     }
+
     
     private func saveUsageRecords() {
         do {

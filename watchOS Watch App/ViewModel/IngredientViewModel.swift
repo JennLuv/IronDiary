@@ -29,9 +29,13 @@ class IngredientViewModel: ObservableObject {
     func getRandomIngredient() {
         let ingredients = self.getIngredientsData()
         DispatchQueue.global().async {
-            let randomIngredient = ingredients.randomElement()!
+            var newIngredient: Ingredient
+            repeat {
+                newIngredient = ingredients.randomElement()!
+            } while newIngredient.id == self.ingredient.id
+
             DispatchQueue.main.async {
-                self.ingredient = randomIngredient
+                self.ingredient = newIngredient
             }
         }
     }

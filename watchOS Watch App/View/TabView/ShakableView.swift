@@ -10,18 +10,17 @@ import HealthKit
 import WatchKit
 
 struct ShakableView: View {
-    
-    @Binding var ingredient: Ingredient
+    @ObservedObject var ingredientViewModel: IngredientViewModel
     @State var ingredientisPresent: Bool = false
     @Binding var fillLevel: Int
     @ObservedObject var shakeController: ShakeController
-    
+
     var body: some View {
-        ScrollView{
+        ScrollView {
             VStack {
                 Spacer()
                 if ingredientisPresent {
-                    CardView(ingredient: $ingredient, fillLevel: $fillLevel)
+                    CardView(ingredient: $ingredientViewModel.ingredient, fillLevel: $fillLevel)
                         .padding()
                 } else {
                     Text("Shake to choose an ingredient")
@@ -38,15 +37,16 @@ struct ShakableView: View {
                 .opacity(0.5)
                 .cornerRadius(30)
                 Spacer()
-                
             }
             .frame(height: 190)
-            .onReceive(shakeController.$isShaked, perform: { isShaken in
-                if isShaken {
-                    ingredientisPresent = true
-                }
+            .onChange(of: shakeController.isShaked, { oldValue, newValue in
+                ingredientisPresent = true
+                ingredientViewModel.getRandomIngredient()
+                playHaptic()
             })
         }
-        
+    }
+    private func playHaptic() {
+        WKInterfaceDevice.current().play(.directionUp)
     }
 }
