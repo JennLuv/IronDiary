@@ -2,5 +2,6 @@
 
 An Iron Tracker App to track your iron intake and view the results in health kit. The app provides ingredients with high iron for you to choose from to fulfill your Iron Goal.
 
-<img width="1587" height="2245" alt="image" src="https://github.com/user-attachments/assets/372128bf-3647-4fde-bffc-805fc8baf1b6" />
+<img width="2900" height="4102" alt="Iron diary-2" src="https://github.com/user-attachments/assets/b4ed81c2-d72e-4455-a0b3-a293ad383a40" />
+
 
